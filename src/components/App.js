@@ -50,6 +50,10 @@ export default function App() {
   );
 
   const numQuestions = questions.length;
+  const maxPossiblePoints = questions.reduce(
+    (prev, cur) => prev + cur.points,
+    0
+  );
 
   useEffect(function () {
     async function fetchQuestions() {
@@ -82,7 +86,13 @@ export default function App() {
 
         {status === "active" && (
           <>
-          <Progress index={index} numQuestions={numQuestions} points={points} />
+            <Progress
+              index={index}
+              numQuestions={numQuestions}
+              points={points}
+              maxPossiblePoints={maxPossiblePoints}
+              answer={answer}
+            />
             <Question
               question={questions[index]}
               dispatch={dispatch}

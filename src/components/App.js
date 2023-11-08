@@ -10,13 +10,14 @@ import Progress from "./Progress";
 import FinishedScreen from "./FinishedScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
+import Difficulty from "./Difficulty";
 
 const SECS_PER_QUESTION = 20;
 
 const initialState = {
   questions: [],
-  // "loading", "error", "ready", "active", "finished"
-  status: "loading",
+  // "loading", "error", "preparing", "ready", "active", "finished"
+  status: "preparing",
   index: 0,
   answer: null,
   points: 0,
@@ -30,6 +31,8 @@ function reducer(state, action) {
       return { ...state, questions: action.payload, status: "ready" };
     case "dataFailed":
       return { ...state, status: "error" };
+    case "difficulty":
+      return { ...state, status: "preparing", difficulty: action.payload };
     case "start":
       return {
         ...state,
@@ -76,33 +79,47 @@ function reducer(state, action) {
 
 export default function App() {
   const [
-    { questions, status, index, answer, points, highscore, secondsRemaining },
+    {
+      questions,
+      status,
+      index,
+      difficulty,
+      answer,
+      points,
+      highscore,
+      secondsRemaining,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
 
   const numQuestions = questions.length;
-  const maxPossiblePoints = questions.reduce(
-    (prev, cur) => prev + cur.points,
-    0
-  );
+  // const maxPossiblePoints = questions.reduce(
+  //   (prev, cur) => prev + cur.points,
+  //   0
+  // );
 
   useEffect(function () {
-    async function fetchQuestions() {
-      try {
-        const res = await fetch("http://localhost:9000/questions");
-        if (!res.ok) {
-          throw new Error("Something went wrong");
+    if (difficulty) {
+      async function fetchQuestions(difficulty) {
+        try {
+          const res = await fetch(
+            `https://opentdb.com/api.php?amount=10&category=9&difficulty=${difficulty}&type=multiple`
+          );
+          console.log(difficulty);
+          if (!res.ok) {
+            throw new Error("Something went wrong");
+          }
+          const data = await res.json();
+          console.log(data);
+          dispatch({ type: "dataReceived", payload: data });
+        } catch (err) {
+          console.error(err.message);
+          dispatch({ type: "dataFailed" });
         }
-        const data = await res.json();
-        console.log(data);
-        dispatch({ type: "dataReceived", payload: data });
-      } catch (err) {
-        console.error(err.message);
-        dispatch({ type: "dataFailed" });
       }
+      fetchQuestions(difficulty);
     }
-    fetchQuestions();
-  }, []);
+  }, [difficulty]);
 
   return (
     <div className="app">
@@ -111,6 +128,7 @@ export default function App() {
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
+        {status === "preparing" && <Difficulty dispatch={dispatch} />}
         {status === "ready" && (
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
@@ -121,7 +139,7 @@ export default function App() {
               index={index}
               numQuestions={numQuestions}
               points={points}
-              maxPossiblePoints={maxPossiblePoints}
+              // maxPossiblePoints={maxPossiblePoints}
               answer={answer}
             />
             <Question
@@ -143,7 +161,7 @@ export default function App() {
         {status === "finished" && (
           <FinishedScreen
             points={points}
-            maxPossiblePoints={maxPossiblePoints}
+            // maxPossiblePoints={maxPossiblePoints}
             highscore={highscore}
             dispatch={dispatch}
           />

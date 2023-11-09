@@ -7,20 +7,16 @@ function Category({ dispatch }) {
         }
       >
         <option value="">--Please select a CATEGORY</option>
-        <option value="9">General Knowledge</option>
-        <option value="10">Books</option>
-        <option value="11">Films</option>
-        <option value="15">Video Game</option>
-        <option value="17">Science and Nature</option>
-        <option value="18">Computers</option>
-        <option value="20">Mythology</option>
-        <option value="21">Sports</option>
-        <option value="22">Geography</option>
-        <option value="23">History</option>
-        <option value="25">Art</option>
-        <option value="26">Celebrities</option>
-        <option value="27">Animals</option>
-        <option value="30">Gadgets</option>
+        <option value="general_knowledge">General Knowledge</option>
+        <option value="music">Music</option>
+        <option value="sport_and_leisure">Sport and Leisure</option>
+        <option value="film_and_tv">Film and TV</option>
+        <option value="arts_and_literature">Arts and Literature</option>
+        <option value="history">History</option>
+        <option value="society_and_culture">Society and Culture</option>
+        <option value="science">Science</option>
+        <option value="geography">Geography</option>
+        <option value="food_and_drink">Food and Drink</option>
       </select>
     </div>
   );

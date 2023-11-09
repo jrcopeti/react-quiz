@@ -115,6 +115,22 @@ function reducer(state, action) {
   }
 }
 
+function processQuestionData(questionData) {
+  return questionData.map((questionObj) => {
+    const options = [
+      ...questionObj.incorrectAnswers,
+      questionObj.correctAnswer,
+    ];
+    options.sort(() => Math.random() - 0.5); // Shuffle options
+    const correctOptionIndex = options.indexOf(questionObj.correctAnswer);
+    return {
+      ...questionObj,
+      options: options,
+      correctOptionIndex: correctOptionIndex,
+    };
+  });
+}
+
 export default function App() {
   const [
     {
@@ -144,7 +160,8 @@ export default function App() {
         async function fetchQuestions(difficulty, category, numQuestions) {
           try {
             const res = await fetch(
-              `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
+              `https://the-trivia-api.com/v2/questions?limit=${numQuestions}&categories=${category}&difficulties=${difficulty}`
+              // `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
             );
             console.log(difficulty, category, numQuestions);
             if (!res.ok) {
@@ -152,7 +169,8 @@ export default function App() {
             }
             const data = await res.json();
             console.log(data);
-            dispatch({ type: "dataReceived", payload: data });
+            const processedData = processQuestionData(data);
+            dispatch({ type: "dataReceived", payload: processedData });
           } catch (err) {
             console.error(err.message);
             dispatch({ type: "dataFailed" });

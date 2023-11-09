@@ -14,6 +14,7 @@ import WelcomePage from "./WelcomePage";
 import Difficulty from "./Difficulty";
 import Category from "./Category";
 import NumQuestions from "./NumQuestions";
+import PreviousButton from "./PreviousButton";
 
 const SECS_PER_QUESTION = 20;
 const POINTS_PER_CORRECT_ANSWER = 10;
@@ -27,7 +28,7 @@ const initialState = {
   // "loading", "error", "preparing", "ready", "active", "finished"
   status: "welcome",
   index: 0,
-  answer: null,
+  userAnswers: [],
   category: null,
   difficulty: null,
   numQuestions: null,
@@ -78,18 +79,33 @@ function reducer(state, action) {
         secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
 
-      case "newAnswer":
+    case "newAnswer":
+      const newUserAnswers = [...state.userAnswers];
+      if (newUserAnswers[state.index] === undefined) {
+        newUserAnswers[state.index] = action.payload;
+
+        // Points calculation
         const question = state.questions?.at(state.index);
         const isCorrect = action.payload === question.correctOptionIndex;
-        const additionalPoints = calculatePoints(isCorrect, question); // or other parameters
+        const additionalPoints = calculatePoints(isCorrect, question);
+
         return {
           ...state,
-          answer: action.payload,
+          userAnswers: newUserAnswers,
           points: state.points + additionalPoints,
         };
+      }
+      // If the answer for the current index is already set, just return the current state
+      return {...state};
 
     case "nextQuestion":
-      return { ...state, index: state.index + 1, answer: null };
+      return { ...state, index: state.index + 1};
+
+    case "previousQuestion":
+      return {
+        ...state,
+        index: state.index > 0 ? state.index - 1 : 0,
+      };
 
     case "finish":
       return {
@@ -102,8 +118,6 @@ function reducer(state, action) {
     case "restart":
       return {
         ...initialState,
-        questions: state.questions,
-        status: "ready",
         highscore: state.highscore,
       };
 
@@ -119,16 +133,14 @@ function reducer(state, action) {
   }
 }
 
-function processQuestionData(questionData) {
-  return questionData.map((questionObj) => {
-    const options = [
-      ...questionObj.incorrectAnswers,
-      questionObj.correctAnswer,
-    ];
-    options.sort(() => Math.random() - 0.5); // Shuffle options
-    const correctOptionIndex = options.indexOf(questionObj.correctAnswer);
+function processQuestionData(data) {
+  return data.map((dataObj) => {
+    const options = [...dataObj.incorrectAnswers, dataObj.correctAnswer];
+    console.log(options);
+    const shuffleOptions = options.sort(() => Math.random() - 0.5);
+    const correctOptionIndex = shuffleOptions.indexOf(dataObj.correctAnswer);
     return {
-      ...questionObj,
+      ...dataObj,
       options: options,
       correctOptionIndex: correctOptionIndex,
     };
@@ -144,19 +156,17 @@ export default function App() {
       difficulty,
       category,
       numQuestions,
-      answer,
+      userAnswers,
       points,
       highscore,
       secondsRemaining,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
+  console.log(userAnswers)
 
-  // const numQuestions = questions.length;
-  // const maxPossiblePoints = questions.reduce(
-  //   (prev, cur) => prev + cur.points,
-  //   0
-  // );
+  const maxPossiblePoints = questions.length * POINTS_PER_CORRECT_ANSWER;
+  console.log(maxPossiblePoints);
 
   useEffect(
     function () {
@@ -174,6 +184,7 @@ export default function App() {
             const data = await res.json();
             console.log(data);
             const processedData = processQuestionData(data);
+            console.log(processedData);
             dispatch({ type: "dataReceived", payload: processedData });
           } catch (err) {
             console.error(err.message);
@@ -210,21 +221,28 @@ export default function App() {
               index={index}
               numQuestions={numQuestions}
               points={points}
-              // maxPossiblePoints={maxPossiblePoints}
-              answer={answer}
+              maxPossiblePoints={maxPossiblePoints}
+              answer={userAnswers[index]}
             />
             <Question
               question={questions[index]}
               dispatch={dispatch}
-              answer={answer}
+              answer={userAnswers[index]}
             />
             <Footer>
               <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <NextButton
                 dispatch={dispatch}
-                answer={answer}
+                answer={userAnswers[index]}
                 numQuestions={numQuestions}
                 index={index}
+              />
+              <PreviousButton
+                dispatch={dispatch}
+                answer={userAnswers[index]}
+                numQuestions={numQuestions}
+                index={index}
+
               />
             </Footer>
           </>
@@ -232,7 +250,7 @@ export default function App() {
         {status === "finished" && (
           <FinishedScreen
             points={points}
-            // maxPossiblePoints={maxPossiblePoints}
+            maxPossiblePoints={maxPossiblePoints}
             highscore={highscore}
             dispatch={dispatch}
           />

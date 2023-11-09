@@ -10,6 +10,7 @@ function Difficulty({ dispatch }) {
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
+        <option value="">Any difficulty</option>
       </select>
     </div>
   );

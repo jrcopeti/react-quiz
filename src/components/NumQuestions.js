@@ -1,14 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
 function NumQuestions({ dispatch }) {
   const numberRef = useRef(null);
   const displayRef = useRef(null);
 
- function handleRangeChange() {
+  function handleRangeChange() {
     displayRef.current.textContent = numberRef.current.value;
-  };
-
-
+  }
 
   return (
     <div>
@@ -22,7 +20,13 @@ function NumQuestions({ dispatch }) {
         onChange={handleRangeChange}
       />
       <span ref={displayRef}>1</span>
-      <button onClick={() => dispatch({ type: "numQuestions", payload: numberRef.current.value })}>Confirm</button>
+      <button
+        onClick={() =>
+          dispatch({ type: "numQuestions", payload: numberRef.current.value })
+        }
+      >
+        Confirm
+      </button>
     </div>
   );
 }

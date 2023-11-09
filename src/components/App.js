@@ -18,7 +18,7 @@ import NumQuestions from "./NumQuestions";
 const SECS_PER_QUESTION = 20;
 
 const initialState = {
-  questions: [],
+  results: [],
   // "loading", "error", "preparing", "ready", "active", "finished"
   status: "welcome",
   index: 0,
@@ -34,7 +34,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
-      return { ...state, questions: action.payload, status: "ready" };
+      return { ...state, results: action.payload, status: "ready" };
 
     case "dataFailed":
       return { ...state, status: "error" };
@@ -70,11 +70,11 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+        secondsRemaining: state.results.length * SECS_PER_QUESTION,
       };
 
     case "newAnswer":
-      const question = state.questions.at(state.index);
+      const question = state.results.at(state.index);
       return {
         ...state,
         answer: action.payload,
@@ -115,10 +115,11 @@ function reducer(state, action) {
   }
 }
 
+
 export default function App() {
   const [
     {
-      questions,
+      results,
       status,
       index,
       difficulty,
@@ -152,7 +153,7 @@ export default function App() {
             }
             const data = await res.json();
             console.log(data);
-            dispatch({ type: "dataReceived", payload: data });
+            dispatch({ type: "dataReceived", payload: data.results });
           } catch (err) {
             console.error(err.message);
             dispatch({ type: "dataFailed" });
@@ -162,7 +163,26 @@ export default function App() {
       }
     },
     [difficulty, category, numQuestions]
-  );
+    );
+
+    console.log(results)
+
+    function processQuestionData(questionData) {
+      return questionData.map((questionObj) => {
+        const options = [...questionObj.incorrect_answers, questionObj.correct_answer];
+        // Randomize options if desired
+        // options.sort(() => Math.random() - 0.5);
+        const correctOptionIndex = options.indexOf(questionObj.correct_answer);
+        return {
+          ...questionObj,
+          options: options,
+          correctOptionIndex: correctOptionIndex,
+        };
+      });
+    }
+
+
+    const processedQuestions = processQuestionData(results);
 
   return (
     <div className="app">
@@ -192,7 +212,8 @@ export default function App() {
               answer={answer}
             />
             <Question
-              question={questions[index]}
+              results={results}
+              question={processedQuestions[index]}
               dispatch={dispatch}
               answer={answer}
             />

@@ -10,16 +10,22 @@ import Progress from "./Progress";
 import FinishedScreen from "./FinishedScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
+import WelcomePage from "./WelcomePage";
 import Difficulty from "./Difficulty";
+import Category from "./Category";
+import NumQuestions from "./NumQuestions";
 
 const SECS_PER_QUESTION = 20;
 
 const initialState = {
   questions: [],
   // "loading", "error", "preparing", "ready", "active", "finished"
-  status: "preparing",
+  status: "welcome",
   index: 0,
   answer: null,
+  category: null,
+  difficulty: null,
+  numQuestions: null,
   points: 0,
   highscore: 0,
   secondsRemaining: null,
@@ -29,16 +35,44 @@ function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
       return { ...state, questions: action.payload, status: "ready" };
+
     case "dataFailed":
       return { ...state, status: "error" };
+
+    case "startCategorySelection":
+      return {
+        ...state,
+        status: "selectingCategory",
+      };
+
+    case "category":
+      return {
+        ...state,
+        category: action.payload,
+        status: "selectingDifficulty",
+      };
+
     case "difficulty":
-      return { ...state, status: "preparing", difficulty: action.payload };
+      return {
+        ...state,
+        difficulty: action.payload,
+        status: "selectingNumQuestions",
+      };
+
+    case "numQuestions":
+      return {
+        ...state,
+        numQuestions: action.payload,
+        status: "loading",
+      };
+
     case "start":
       return {
         ...state,
         status: "active",
         secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
+
     case "newAnswer":
       const question = state.questions.at(state.index);
       return {
@@ -49,8 +83,10 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
       };
+
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
+
     case "finish":
       return {
         ...state,
@@ -58,6 +94,7 @@ function reducer(state, action) {
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
       };
+
     case "restart":
       return {
         ...initialState,
@@ -65,6 +102,7 @@ function reducer(state, action) {
         status: "ready",
         highscore: state.highscore,
       };
+
     case "timer":
       return {
         ...state,
@@ -84,6 +122,8 @@ export default function App() {
       status,
       index,
       difficulty,
+      category,
+      numQuestions,
       answer,
       points,
       highscore,
@@ -92,34 +132,37 @@ export default function App() {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  const numQuestions = questions.length;
+  // const numQuestions = questions.length;
   // const maxPossiblePoints = questions.reduce(
   //   (prev, cur) => prev + cur.points,
   //   0
   // );
 
-  useEffect(function () {
-    if (difficulty) {
-      async function fetchQuestions(difficulty) {
-        try {
-          const res = await fetch(
-            `https://opentdb.com/api.php?amount=10&category=9&difficulty=${difficulty}&type=multiple`
-          );
-          console.log(difficulty);
-          if (!res.ok) {
-            throw new Error("Something went wrong");
+  useEffect(
+    function () {
+      if (category && difficulty && numQuestions) {
+        async function fetchQuestions(difficulty, category, numQuestions) {
+          try {
+            const res = await fetch(
+              `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
+            );
+            console.log(difficulty, category, numQuestions);
+            if (!res.ok) {
+              throw new Error("Something went wrong");
+            }
+            const data = await res.json();
+            console.log(data);
+            dispatch({ type: "dataReceived", payload: data });
+          } catch (err) {
+            console.error(err.message);
+            dispatch({ type: "dataFailed" });
           }
-          const data = await res.json();
-          console.log(data);
-          dispatch({ type: "dataReceived", payload: data });
-        } catch (err) {
-          console.error(err.message);
-          dispatch({ type: "dataFailed" });
         }
+        fetchQuestions(difficulty, category, numQuestions);
       }
-      fetchQuestions(difficulty);
-    }
-  }, [difficulty]);
+    },
+    [difficulty, category, numQuestions]
+  );
 
   return (
     <div className="app">
@@ -128,7 +171,13 @@ export default function App() {
       <Main>
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "preparing" && <Difficulty dispatch={dispatch} />}
+        {status === "welcome" && <WelcomePage dispatch={dispatch} />}
+        {status === "selectingCategory" && <Category dispatch={dispatch} />}
+        {status === "selectingDifficulty" && <Difficulty dispatch={dispatch} />}
+        {status === "selectingNumQuestions" && (
+          <NumQuestions dispatch={dispatch} />
+        )}
+
         {status === "ready" && (
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}

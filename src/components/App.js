@@ -18,7 +18,7 @@ import NumQuestions from "./NumQuestions";
 const SECS_PER_QUESTION = 20;
 
 const initialState = {
-  results: [],
+  questions: [],
   // "loading", "error", "preparing", "ready", "active", "finished"
   status: "welcome",
   index: 0,
@@ -34,7 +34,7 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
-      return { ...state, results: action.payload, status: "ready" };
+      return { ...state, questions: action.payload, status: "ready" };
 
     case "dataFailed":
       return { ...state, status: "error" };
@@ -70,11 +70,11 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.results.length * SECS_PER_QUESTION,
+        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
 
     case "newAnswer":
-      const question = state.results.at(state.index);
+      const question = state.questions.at(state.index);
       return {
         ...state,
         answer: action.payload,
@@ -115,11 +115,26 @@ function reducer(state, action) {
   }
 }
 
+function processQuestionData(questionData) {
+  return questionData.map((questionObj) => {
+    const options = [
+      ...questionObj.incorrectAnswers,
+      questionObj.correctAnswer,
+    ];
+    options.sort(() => Math.random() - 0.5); // Shuffle options
+    const correctOptionIndex = options.indexOf(questionObj.correctAnswer);
+    return {
+      ...questionObj,
+      options: options,
+      correctOptionIndex: correctOptionIndex,
+    };
+  });
+}
 
 export default function App() {
   const [
     {
-      results,
+      questions,
       status,
       index,
       difficulty,
@@ -145,7 +160,8 @@ export default function App() {
         async function fetchQuestions(difficulty, category, numQuestions) {
           try {
             const res = await fetch(
-              `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
+              `https://the-trivia-api.com/v2/questions?limit=${numQuestions}&categories=${category}&difficulties=${difficulty}`
+              // `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
             );
             console.log(difficulty, category, numQuestions);
             if (!res.ok) {
@@ -153,7 +169,8 @@ export default function App() {
             }
             const data = await res.json();
             console.log(data);
-            dispatch({ type: "dataReceived", payload: data.results });
+            const processedData = processQuestionData(data);
+            dispatch({ type: "dataReceived", payload: processedData });
           } catch (err) {
             console.error(err.message);
             dispatch({ type: "dataFailed" });
@@ -163,26 +180,7 @@ export default function App() {
       }
     },
     [difficulty, category, numQuestions]
-    );
-
-    console.log(results)
-
-    function processQuestionData(questionData) {
-      return questionData.map((questionObj) => {
-        const options = [...questionObj.incorrect_answers, questionObj.correct_answer];
-        // Randomize options if desired
-        // options.sort(() => Math.random() - 0.5);
-        const correctOptionIndex = options.indexOf(questionObj.correct_answer);
-        return {
-          ...questionObj,
-          options: options,
-          correctOptionIndex: correctOptionIndex,
-        };
-      });
-    }
-
-
-    const processedQuestions = processQuestionData(results);
+  );
 
   return (
     <div className="app">
@@ -212,8 +210,7 @@ export default function App() {
               answer={answer}
             />
             <Question
-              results={results}
-              question={processedQuestions[index]}
+              question={questions[index]}
               dispatch={dispatch}
               answer={answer}
             />

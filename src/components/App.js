@@ -16,6 +16,11 @@ import Category from "./Category";
 import NumQuestions from "./NumQuestions";
 
 const SECS_PER_QUESTION = 20;
+const POINTS_PER_CORRECT_ANSWER = 10;
+
+function calculatePoints(isCorrect) {
+  return isCorrect ? POINTS_PER_CORRECT_ANSWER : 0;
+}
 
 const initialState = {
   questions: [],
@@ -73,16 +78,15 @@ function reducer(state, action) {
         secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
 
-    case "newAnswer":
-      const question = state.questions.at(state.index);
-      return {
-        ...state,
-        answer: action.payload,
-        points:
-          action.payload === question.correctOption
-            ? state.points + question.points
-            : state.points,
-      };
+      case "newAnswer":
+        const question = state.questions?.at(state.index);
+        const isCorrect = action.payload === question.correctOptionIndex;
+        const additionalPoints = calculatePoints(isCorrect, question); // or other parameters
+        return {
+          ...state,
+          answer: action.payload,
+          points: state.points + additionalPoints,
+        };
 
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };

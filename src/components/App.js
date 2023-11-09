@@ -18,8 +18,9 @@ import NumQuestions from "./NumQuestions";
 const SECS_PER_QUESTION = 20;
 const POINTS_PER_CORRECT_ANSWER = 10;
 
+
 function calculatePoints(isCorrect) {
-  return isCorrect ? POINTS_PER_CORRECT_ANSWER : 0;
+  return isCorrect ? POINTS_PER_CORRECT_ANSWER : 0 ;
 }
 
 const initialState = {
@@ -102,8 +103,6 @@ function reducer(state, action) {
     case "restart":
       return {
         ...initialState,
-        questions: state.questions,
-        status: "ready",
         highscore: state.highscore,
       };
 
@@ -152,11 +151,9 @@ export default function App() {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  // const numQuestions = questions.length;
-  // const maxPossiblePoints = questions.reduce(
-  //   (prev, cur) => prev + cur.points,
-  //   0
-  // );
+
+  const maxPossiblePoints = questions.length * POINTS_PER_CORRECT_ANSWER;
+  console.log(maxPossiblePoints);
 
   useEffect(
     function () {
@@ -210,7 +207,7 @@ export default function App() {
               index={index}
               numQuestions={numQuestions}
               points={points}
-              // maxPossiblePoints={maxPossiblePoints}
+              maxPossiblePoints={maxPossiblePoints}
               answer={answer}
             />
             <Question
@@ -232,7 +229,7 @@ export default function App() {
         {status === "finished" && (
           <FinishedScreen
             points={points}
-            // maxPossiblePoints={maxPossiblePoints}
+            maxPossiblePoints={maxPossiblePoints}
             highscore={highscore}
             dispatch={dispatch}
           />

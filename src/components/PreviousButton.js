@@ -10,6 +10,5 @@ function PreviousButton({ dispatch, index }) {
         Previous
       </button>
     );
-
 }
 export default PreviousButton;

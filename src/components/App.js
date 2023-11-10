@@ -84,7 +84,6 @@ function reducer(state, action) {
       if (newUserAnswers[state.index] === undefined) {
         newUserAnswers[state.index] = action.payload;
 
-        // Points calculation
         const question = state.questions?.at(state.index);
         const isCorrect = action.payload === question.correctOptionIndex;
         const additionalPoints = calculatePoints(isCorrect, question);
@@ -96,10 +95,10 @@ function reducer(state, action) {
         };
       }
       // If the answer for the current index is already set, just return the current state
-      return {...state};
+      return { ...state };
 
     case "nextQuestion":
-      return { ...state, index: state.index + 1};
+      return { ...state, index: state.index + 1 };
 
     case "previousQuestion":
       return {
@@ -163,7 +162,7 @@ export default function App() {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  console.log(userAnswers)
+  console.log(userAnswers);
 
   const maxPossiblePoints = questions.length * POINTS_PER_CORRECT_ANSWER;
   console.log(maxPossiblePoints);
@@ -242,7 +241,6 @@ export default function App() {
                 answer={userAnswers[index]}
                 numQuestions={numQuestions}
                 index={index}
-
               />
             </Footer>
           </>

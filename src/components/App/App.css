@@ -7,10 +7,9 @@
   --color-header: #1c7fab;
   --color-header2: #4e5085;
 
-  --color-theme: #7DCBC9;
+  --color-theme: #7dcbc9;
   --color-accent: #fa5151;
 }
-
 
 * {
   margin: 0;
@@ -20,13 +19,11 @@
 
 html {
   font-size: 62.5%;
-  font-family: 'Sen', sans-serif;
+  font-family: "Sen", sans-serif;
 }
 
 body {
   color: (--color-darkest);
-
-
 }
 
 .app {
@@ -38,7 +35,7 @@ body {
   /* justify-content: center; */
   align-items: center;
   flex-shrink: 0;
-  border-radius: 30px;
+
   position: relative;
 
   background: var(--color-light);

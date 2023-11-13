@@ -7,7 +7,9 @@
   left: 50%;
   transform: translate(-50%, -26%);
 
-  border-radius: 50px;
+
+
+  border-radius: 15px;
   background: linear-gradient(315deg, #d9dde1, #ffffff);
   box-shadow: -20px -20px 60px #cdd1d5, 20px 20px 60px #ffffff;
 }

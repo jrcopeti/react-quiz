@@ -1,0 +1,13 @@
+.main {
+  width: 86%;
+  height: 70%;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -33%);
+
+  border-radius: 50px;
+  background: linear-gradient(315deg, #d9dde1, #ffffff);
+  box-shadow: -20px -20px 60px #cdd1d5, 20px 20px 60px #ffffff;
+}

@@ -1,0 +1,14 @@
+
+  .main {
+    width: 87%;
+    height: 60%;
+    background-color: aqua;
+    position: absolute;
+    z-index: 10;
+    top: 25%;
+
+    border-radius: 50px;
+    background: linear-gradient(145deg, #d9dde1, #ffffff);
+    box-shadow:  20px 20px 60px #cdd1d5,
+                 -20px -20px 60px #ffffff;
+  }

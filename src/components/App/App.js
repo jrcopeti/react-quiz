@@ -1,20 +1,21 @@
 import { useEffect, useReducer } from "react";
-import Header from "./Header";
-import Main from "./Main";
-import Loader from "./Loader";
-import Error from "./Error";
-import StartScreen from "./StartScreen";
-import Question from "./Question";
-import NextButton from "./NextButton";
-import Progress from "./Progress";
-import FinishedScreen from "./FinishedScreen";
-import Footer from "./Footer";
-import Timer from "./Timer";
-import WelcomePage from "./WelcomePage";
-import Difficulty from "./Difficulty";
-import Category from "./Category";
-import NumQuestions from "./NumQuestions";
-import PreviousButton from "./PreviousButton";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Loader from "../Loader/Loader";
+import Error from "../Error/Error";
+import StartScreen from "../StartScreen/StartScreen";
+import Question from "../Question/Question";
+import NextButton from "../NextButton/NextButton";
+import Progress from "../Progress/Progress";
+import FinishedScreen from "../FinishedScreen/FinishedScreen";
+import Footer from "../Footer/Footer";
+import Timer from "../Timer/Timer";
+import WelcomePage from "../WelcomePage/WelcomePage";
+import Difficulty from "../Difficulty/Difficulty";
+import Category from "../Category/Category";
+import NumQuestions from "../NumQuestions/NumQuestions";
+import PreviousButton from "../PreviousButton/PreviousButton";
+import "./App.css";
 
 const SECS_PER_QUESTION = 20;
 const POINTS_PER_CORRECT_ANSWER = 10;
@@ -228,21 +229,7 @@ export default function App() {
               dispatch={dispatch}
               answer={userAnswers[index]}
             />
-            <Footer>
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
-              <NextButton
-                dispatch={dispatch}
-                answer={userAnswers[index]}
-                numQuestions={numQuestions}
-                index={index}
-              />
-              <PreviousButton
-                dispatch={dispatch}
-                answer={userAnswers[index]}
-                numQuestions={numQuestions}
-                index={index}
-              />
-            </Footer>
+    
           </>
         )}
         {status === "finished" && (
@@ -254,6 +241,23 @@ export default function App() {
           />
         )}
       </Main>
+      {status === "active" && (
+        <Footer>
+          <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+          <NextButton
+            dispatch={dispatch}
+            answer={userAnswers[index]}
+            numQuestions={numQuestions}
+            index={index}
+          />
+          <PreviousButton
+            dispatch={dispatch}
+            answer={userAnswers[index]}
+            numQuestions={numQuestions}
+            index={index}
+          />
+        </Footer>
+      )}
     </div>
   );
 }

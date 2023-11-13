@@ -1,0 +1,48 @@
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+
+}
+
+.btn-option {
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  border: none;
+  font-size: 2rem;
+
+  padding: 1.2rem 2.4rem;
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  border-radius: 30px;
+  background: #f1f6fa;
+  box-shadow: 5px 5px 10px #cdd1d5, -5px -5px 10px #ffffff;
+}
+
+.btn-option.correct {
+  background-color: var(--color-theme);
+  border: 1px solid var(--color-theme);
+  color: var(--color-light);
+}
+.btn-option.wrong {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-darkest);
+}
+
+.answer {
+  transform: translateX(2rem);
+}
+
+.btn-option:not([disabled]):hover {
+  transform: translateX(2rem);
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+}

@@ -1,3 +1,4 @@
+import "./Progress.css";
 function Progress({ index, numQuestions, points, maxPossiblePoints, answer }) {
   console.log(points)
   return (

@@ -1,10 +1,58 @@
-function StartScreen({numQuestions, dispatch}) {
+import "./StartScreen.css";
+function StartScreen({ numQuestions, category, difficulty, dispatch }) {
+  console.log(numQuestions, category, difficulty);
+
+  const categoryNames = () => {
+    switch (category) {
+      case "general_knowledge":
+        return "General Knowledge";
+      case "music":
+        return "Music";
+      case "sport_and_leisure":
+        return "Sport and Leisure";
+      case "film_and_tv":
+        return "Film and TV";
+      case "arts_and_literature":
+        return "Arts and Literature";
+      case "history":
+        return "History";
+      case "society_and_culture":
+        return "Society and Culture";
+      case "science":
+        return "Science";
+      case "geography":
+        return "Geography";
+      case "food_and_drink":
+        return "Food and Drink";
+      default:
+        return null;
+    }
+
+
+  };
+
+  const difficultyNames = () => {
+    switch (difficulty) {
+      case "easy":
+        return "Easy";
+      case "medium":
+        return "Medium";
+      case "hard":
+        return "Hard";
+      default:
+        return null;
+    }
+  }
   return (
-    <div>
-      <h3>{numQuestions} questions to test your React mastery</h3>
-      <button className="btn btn-ui" onClick={() => dispatch({type: "start"})}>Start Quiz</button>
+    <div className="confirm">
+      <h3>{numQuestions} questions</h3>
+      <h3>{difficultyNames()}</h3>
+      <h3>{categoryNames()}</h3>
+      <button className="" onClick={() => dispatch({ type: "start" })}>
+        Play
+      </button>
     </div>
-  )
+  );
 }
 
-export default StartScreen
+export default StartScreen;

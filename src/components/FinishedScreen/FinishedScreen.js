@@ -1,3 +1,4 @@
+import "./FinishedScreen.css";
 function FinishedScreen({ points, maxPossiblePoints, highscore, dispatch }) {
   const percentage = (points / maxPossiblePoints) * 100;
 
@@ -16,7 +17,7 @@ function FinishedScreen({ points, maxPossiblePoints, highscore, dispatch }) {
       </p>
       <p className="highscore">(Highscore: {highscore} points)</p>
       <button
-        className="btn btn-ui"
+        className="restart-button"
         onClick={() => dispatch({ type: "restart" })}
       >
         Restart Quiz

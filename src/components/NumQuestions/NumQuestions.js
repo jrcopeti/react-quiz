@@ -1,33 +1,48 @@
-import React, { useRef } from "react";
+import "./NumQuestions.css";
 
-function NumQuestions({ dispatch }) {
-  const numberRef = useRef(null);
-  const displayRef = useRef(null);
+function NumQuestions({ numQuestions, dispatch }) {
+  // const numberRef = useRef(null);
+  // const displayRef = useRef(null);
 
-  function handleRangeChange() {
-    displayRef.current.textContent = numberRef.current.value;
-  }
+  // function handleRangeChange() {
+  //   displayRef.current.textContent = numberRef.current.value;
+  // }
 
   return (
-    <div>
-      <input
-        ref={numberRef}
-        type="range"
-        min="3"
-        max="20"
-        step="1"
-        defaultValue="1"
-        onChange={handleRangeChange}
-      />
-      <span ref={displayRef}>1</span>
-      <button
-        onClick={() =>
-          dispatch({ type: "numQuestions", payload: numberRef.current.value })
+    <div className="num-questions">
+      <select
+        value={numQuestions}
+        onChange={(e) =>
+          dispatch({ type: "numQuestions", payload: e.target.value })
         }
       >
-        Confirm
-      </button>
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
+      </select>
     </div>
+
+    // <div>
+    //   <input
+    //     ref={numberRef}
+    //     type="range"
+    //     min="3"
+    //     max="20"
+    //     step="1"
+    //     defaultValue="1"
+    //     onChange={handleRangeChange}
+    //   />
+    //   <span ref={displayRef}>1</span>
+    //   <button
+    //     onClick={() =>
+    //       dispatch({ type: "numQuestions", payload: numberRef.current.value })
+    //     }
+    //   >
+    //     Confirm
+    //   </button>
+    // </div>
   );
 }
 

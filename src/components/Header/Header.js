@@ -116,8 +116,7 @@ function Header() {
             <circle cx="58" cy="58" r="58" fill="white" />
           </svg>
 
-        <img src={logo} alt="quiz" className="logo" />
-
+          <img src={logo} alt="quiz" className="logo" />
         </div>
       </header>
     </>

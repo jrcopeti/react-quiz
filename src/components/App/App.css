@@ -7,8 +7,8 @@
   --color-header: #1c7fab;
   --color-header2: #4e5085;
 
-  --color-theme: #1098ad;
-  --color-accent: #ffa94d;
+  --color-theme: #7DCBC9;
+  --color-accent: #fa5151;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  color: var(--color-light);
+ 
 
 }
 

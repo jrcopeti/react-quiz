@@ -1,0 +1,11 @@
+.timer {
+  float: left;
+  margin: 3%;
+  font-size: 1.8rem;
+  color: var(--color-medium);
+  padding: 1.4rem 2.8rem;
+  border: none;
+  border-radius: 30px;
+  background: #f1f6fa;
+  box-shadow: inset 5px 5px 10px #cdd1d5, inset -5px -5px 10px #ffffff;
+}

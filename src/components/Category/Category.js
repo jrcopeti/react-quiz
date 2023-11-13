@@ -1,6 +1,7 @@
+import "./Category.css";
 function Category({ dispatch }) {
   return (
-    <div>
+    <div className="category">
       <select
         onChange={(e) =>
           dispatch({ type: "category", payload: e.target.value })

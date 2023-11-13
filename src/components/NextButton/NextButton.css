@@ -1,6 +1,6 @@
 .next-previous-button {
   font-family: inherit;
-  color: var (--color-darkest);
+  color: var(--color-darkest);
   border: none;
   font-size: 2rem;
 

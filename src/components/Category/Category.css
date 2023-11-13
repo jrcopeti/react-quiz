@@ -6,7 +6,7 @@
 }
 
 .category select {
-  color: var (--color-darkest);
+  color: var(--color-darkest);
   font-family: inherit;
   font-size: 1.8rem;
   border: none;

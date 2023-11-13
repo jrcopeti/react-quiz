@@ -20,13 +20,12 @@
 html {
   font-size: 62.5%;
   font-family: "Sen", sans-serif;
-  color: (--color-darkest);
+  color: var(--color-darkest);
 }
 
 body {
-  color: (--color-darkest);
+  color: var(--color-darkest);
 }
-
 .app {
   width: auto;
   height: 100vh;

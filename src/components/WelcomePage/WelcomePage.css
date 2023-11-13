@@ -17,6 +17,7 @@
 
 .welcome button {
   font-family: inherit;
+  color: (--color-darkest);
   font-weight: 600;
   border: none;
   font-size: 2rem;

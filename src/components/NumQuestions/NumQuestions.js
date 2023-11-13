@@ -9,7 +9,7 @@ function NumQuestions({ numQuestions, dispatch }) {
   // }
 
   return (
-    <div className="num-questions">
+    <div className="category">
       <select
         value={numQuestions}
         onChange={(e) =>

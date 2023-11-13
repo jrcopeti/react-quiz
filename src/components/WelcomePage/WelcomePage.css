@@ -8,13 +8,16 @@
 }
 
 .welcome h2 {
-  font-size: 3.6rem;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 600;
   margin: 3%;
   color: var(--color-header);
 }
 
 .welcome button {
   font-family: inherit;
+  font-weight: 600;
   border: none;
   font-size: 2rem;
 

@@ -5,10 +5,10 @@ function PreviousButton({ dispatch, index }) {
   if (index !== 0)
     return (
       <button
-        className="previous-button"
+        className="next-previous-button"
         onClick={() => dispatch({ type: "previousQuestion" })}
       >
-        Previous
+        &larr;
       </button>
     );
 }

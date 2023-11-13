@@ -48,6 +48,28 @@ function Header() {
           <circle cx="45" cy="45" r="45" fill="#4E5085" fill-opacity="0.1" />
         </svg>
 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-5"
+        >
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.1" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-6"
+        >
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.1" />
+        </svg>
+
         <div className="logo-container">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -95,6 +117,7 @@ function Header() {
           </svg>
 
         <img src={logo} alt="quiz" className="logo" />
+
         </div>
       </header>
     </>

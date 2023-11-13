@@ -229,20 +229,7 @@ export default function App() {
               dispatch={dispatch}
               answer={userAnswers[index]}
             />
-    
-          </>
-        )}
-        {status === "finished" && (
-          <FinishedScreen
-            points={points}
-            maxPossiblePoints={maxPossiblePoints}
-            highscore={highscore}
-            dispatch={dispatch}
-          />
-        )}
-      </Main>
-      {status === "active" && (
-        <Footer>
+            <Footer>
           <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
           <NextButton
             dispatch={dispatch}
@@ -257,7 +244,19 @@ export default function App() {
             index={index}
           />
         </Footer>
-      )}
+
+          </>
+        )}
+        {status === "finished" && (
+          <FinishedScreen
+            points={points}
+            maxPossiblePoints={maxPossiblePoints}
+            highscore={highscore}
+            dispatch={dispatch}
+          />
+        )}
+      </Main>
+
     </div>
   );
 }

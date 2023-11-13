@@ -2,7 +2,7 @@ import "./WelcomePage.css";
 function WelcomePage({ dispatch }) {
   return (
     <div className="welcome">
-      <h2>Welcome to quiz</h2>
+      <h2>Welcome to the quiz game</h2>
       <button
         onClick={() => dispatch({ type: "startCategorySelection" })}
       >

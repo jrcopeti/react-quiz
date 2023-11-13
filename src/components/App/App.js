@@ -234,7 +234,9 @@ export default function App() {
               dispatch={dispatch}
               answer={userAnswers[index]}
             />
-            <Footer>
+          </>
+        )}
+          {status === "active" && (  <Footer>
               <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <PreviousButton
                 dispatch={dispatch}
@@ -248,9 +250,7 @@ export default function App() {
                 numQuestions={numQuestions}
                 index={index}
               />
-            </Footer>
-          </>
-        )}
+            </Footer>)}
         {status === "finished" && (
           <FinishedScreen
             points={points}

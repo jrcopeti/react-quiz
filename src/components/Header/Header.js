@@ -12,7 +12,7 @@ function Header() {
           fill="none"
           className="elipse-1"
         >
-          <circle cx="0" cy="45" r="45" fill="#4E5085" fill-opacity="0.1" />
+          <circle cx="0" cy="45" r="45" fill="#4E5085" fill-opacity="0.4" />
         </svg>
 
         <svg
@@ -23,7 +23,7 @@ function Header() {
           fill="none"
           className="elipse-2"
         >
-          <circle cx="45" cy="11" r="45" fill="#4E5085" fill-opacity="0.1" />
+          <circle cx="45" cy="11" r="45" fill="#4E5085" fill-opacity="0.4" />
         </svg>
 
         <svg
@@ -34,7 +34,7 @@ function Header() {
           fill="none"
           className="elipse-3"
         >
-          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.1" />
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.4" />
         </svg>
 
         <svg
@@ -45,7 +45,7 @@ function Header() {
           fill="none"
           className="elipse-4"
         >
-          <circle cx="45" cy="45" r="45" fill="#4E5085" fill-opacity="0.1" />
+          <circle cx="45" cy="45" r="45" fill="#4E5085" fill-opacity="0.4" />
         </svg>
 
         <svg
@@ -56,7 +56,7 @@ function Header() {
           fill="none"
           className="elipse-5"
         >
-          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.1" />
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.4" />
         </svg>
 
         <svg
@@ -67,7 +67,7 @@ function Header() {
           fill="none"
           className="elipse-6"
         >
-          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.1" />
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fill-opacity="0.4" />
         </svg>
 
         <div className="logo-container">

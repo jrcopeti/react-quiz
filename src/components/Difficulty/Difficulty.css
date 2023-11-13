@@ -1,0 +1,18 @@
+.difficulty {
+  margin-top: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.difficulty select {
+  font-family: inherit;
+  font-size: 1.5rem;
+  border: none;
+  padding: 1.2rem 2.4rem;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 30px;
+  background: #f1f6fa;
+  box-shadow: inset 5px 5px 10px #cdd1d5, inset -5px -5px 10px #ffffff;
+}

@@ -1,3 +1,4 @@
+import "./Question.css";
 import Options from "../Options/Options";
 function Question({ question, dispatch, answer }) {
 

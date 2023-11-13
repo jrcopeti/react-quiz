@@ -1,4 +1,7 @@
-.question{
-  background: blueviolet;
-  height: 30px;
+.question h4 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-header);
+  padding: 0rem 1.5rem;
+  text-align: center;
 }

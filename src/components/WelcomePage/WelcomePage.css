@@ -1,0 +1,29 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 10%;
+}
+
+.welcome h2 {
+  font-size: 3.6rem;
+  margin: 3%;
+  color: var(--color-header);
+}
+
+.welcome button {
+  font-family: inherit;
+  border: none;
+  font-size: 2rem;
+
+  padding: 1.2rem 2.4rem;
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  border-radius: 30px;
+  background: #f1f6fa;
+  box-shadow: 5px 5px 10px #cdd1d5, -5px -5px 10px #ffffff;
+}

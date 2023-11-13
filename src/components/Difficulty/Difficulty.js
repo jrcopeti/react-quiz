@@ -1,6 +1,7 @@
+import "./Difficulty.css";
 function Difficulty({ dispatch }) {
   return (
-    <div>
+    <div className="difficulty">
       <select
         onChange={(e) =>
           dispatch({ type: "difficulty", payload: e.target.value })
@@ -10,7 +11,6 @@ function Difficulty({ dispatch }) {
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
-        <option value="">Any difficulty</option>
       </select>
     </div>
   );

@@ -1,3 +1,5 @@
+import "./Options.css";
+
 function Options({ question, dispatch, answer }) {
   const hasAnswered = answer !== undefined;
 

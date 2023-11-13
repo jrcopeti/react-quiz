@@ -17,7 +17,7 @@ import NumQuestions from "../NumQuestions/NumQuestions";
 import PreviousButton from "../PreviousButton/PreviousButton";
 import "./App.css";
 
-const SECS_PER_QUESTION = 20;
+const SECS_PER_QUESTION = 90;
 const POINTS_PER_CORRECT_ANSWER = 10;
 
 function calculatePoints(isCorrect) {
@@ -212,7 +212,12 @@ export default function App() {
         )}
 
         {status === "ready" && (
-          <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
+          <StartScreen
+            numQuestions={numQuestions}
+            category={category}
+            difficulty={difficulty}
+            dispatch={dispatch}
+          />
         )}
 
         {status === "active" && (
@@ -230,21 +235,20 @@ export default function App() {
               answer={userAnswers[index]}
             />
             <Footer>
-          <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
-          <NextButton
-            dispatch={dispatch}
-            answer={userAnswers[index]}
-            numQuestions={numQuestions}
-            index={index}
-          />
-          <PreviousButton
-            dispatch={dispatch}
-            answer={userAnswers[index]}
-            numQuestions={numQuestions}
-            index={index}
-          />
-        </Footer>
-
+              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+              <PreviousButton
+                dispatch={dispatch}
+                answer={userAnswers[index]}
+                numQuestions={numQuestions}
+                index={index}
+              />
+              <NextButton
+                dispatch={dispatch}
+                answer={userAnswers[index]}
+                numQuestions={numQuestions}
+                index={index}
+              />
+            </Footer>
           </>
         )}
         {status === "finished" && (
@@ -256,7 +260,6 @@ export default function App() {
           />
         )}
       </Main>
-
     </div>
   );
 }

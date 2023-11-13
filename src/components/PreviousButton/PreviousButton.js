@@ -1,10 +1,11 @@
+import "./PreviousButton.css";
 function PreviousButton({ dispatch, index }) {
   if (index === 0) return null;
 
   if (index !== 0)
     return (
       <button
-        className="btn btn-ui"
+        className="previous-button"
         onClick={() => dispatch({ type: "previousQuestion" })}
       >
         Previous

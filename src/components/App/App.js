@@ -17,7 +17,7 @@ import NumQuestions from "../NumQuestions/NumQuestions";
 import PreviousButton from "../PreviousButton/PreviousButton";
 import "./App.css";
 
-const SECS_PER_QUESTION = 15;
+const SECS_PER_QUESTION = 1000000;
 const POINTS_PER_CORRECT_ANSWER = 10;
 
 function calculatePoints(isCorrect) {

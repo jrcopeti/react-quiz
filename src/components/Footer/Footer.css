@@ -12,14 +12,9 @@
   z-index: 1000;
 }
 
-@media only screen and (min-width: 390px) {
-  .footer {
-    bottom: 1%;
-  }
-}
 
 @media only screen and (min-width: 768px) {
   .footer {
-    bottom: 35%;
+    bottom: 21%;
   }
 }

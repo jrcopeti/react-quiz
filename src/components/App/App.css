@@ -32,7 +32,6 @@ body {
   display: flex;
   padding: 18px 10px 10px 18px;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   flex-shrink: 0;
 
@@ -40,4 +39,15 @@ body {
 
   background: var(--color-light);
   overflow-x: hidden;
+
+}
+
+@media only screen and (min-width: 768px) {
+  .app {
+    padding: 18px 10px 10px 18px;
+    width: 768px;
+    height: 980px;
+    /* position: fixed; */
+    left: 25%;
+  }
 }

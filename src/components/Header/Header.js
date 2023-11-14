@@ -70,6 +70,116 @@ function Header() {
           <circle cx="20" cy="20" r="20" fill="#4E5085" fillOpacity="0.5" />
         </svg>
 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-7"
+        >
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-8"
+        >
+          <circle cx="20" cy="20" r="20" fill="#1C7FAB" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-9"
+        >
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-10"
+        >
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-11"
+        >
+          <circle cx="20" cy="20" r="20" fill="#1C7FAB" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-12"
+        >
+          <circle cx="20" cy="20" r="20" fill="#4E5085" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-13"
+        >
+          <circle cx="20" cy="20" r="20" fill="#4E5085"  fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-14"
+        >
+          <circle cx="20" cy="20" r="20" fill="#1C7FAB" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-15"
+        >
+          <circle cx="20" cy="20" r="20" fill="#1C7FAB" fillOpacity="0.5" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          className="elipse-16"
+        >
+          <circle cx="20" cy="20" r="20" fill="#1C7FAB" fillOpacity="0.5" />
+        </svg>
+
         <div className="logo-container">
           <svg
             xmlns="http://www.w3.org/2000/svg"

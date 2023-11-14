@@ -2,7 +2,7 @@
   width: 90%;
   height: 90%;
   position: absolute;
-  /* overflow: scroll; */
+  overflow: auto;
 
   top: 50%;
   left: 50%;

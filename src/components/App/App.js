@@ -17,7 +17,7 @@ import NumQuestions from "../NumQuestions/NumQuestions";
 import PreviousButton from "../PreviousButton/PreviousButton";
 import "./App.css";
 
-const SECS_PER_QUESTION = 1500000000000000000;
+const SECS_PER_QUESTION = 15;
 const POINTS_PER_CORRECT_ANSWER = 10;
 
 function calculatePoints(isCorrect) {
@@ -244,7 +244,7 @@ export default function App() {
         {status === "active" && (
           <>
             <Footer>
-            <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <PreviousButton
                 dispatch={dispatch}
                 answer={userAnswers[index]}

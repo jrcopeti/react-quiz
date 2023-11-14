@@ -18,7 +18,7 @@
   border-radius: 30px;
   background: #f1f6fa;
   box-shadow: 5px 5px 10px #cdd1d5, -5px -5px 10px #ffffff;
-  color: var( --color-darkest);
+  color: var(--color-dark);
 }
 
 .category label {

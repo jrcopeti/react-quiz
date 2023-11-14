@@ -17,7 +17,8 @@ function NumQuestions({ numQuestions, dispatch }) {
           dispatch({ type: "numQuestions", payload: e.target.value })
         }
       >
-        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+        <option value="">-----------------------</option>
+        {Array.from({ length: 18 }, (_, i) => i + 3).map((num) => (
           <option value={num} key={num}>
             {num}
           </option>

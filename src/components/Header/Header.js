@@ -1,5 +1,5 @@
 import "./Header.css";
-import logo from "./vecteezy_quiz-neon-signs-style-text-vector_7834798.jpg";
+import questionBox from "./question-box.jpg";
 function Header() {
   return (
     <>
@@ -101,7 +101,7 @@ function Header() {
               cy="69.5"
               r="69.5"
               fill="#4E5085"
-              fillOpacity="0.5"
+              fillOpacity="0.6"
             />
           </svg>
 
@@ -116,7 +116,7 @@ function Header() {
             <circle cx="58" cy="58" r="58" fill="white" />
           </svg>
 
-          <img src={logo} alt="quiz" className="logo" />
+          <img src={questionBox} alt="quiz" className="logo" />
         </div>
       </header>
     </>

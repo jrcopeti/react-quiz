@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import "./Timer.css";
 
-
 function Timer({ dispatch, secondsRemaining }) {
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
-
-
 
   useEffect(
     function () {
@@ -20,9 +17,7 @@ function Timer({ dispatch, secondsRemaining }) {
   );
 
   return (
-    <div className="timer">
-      {mins < 10 && "0"}
-      {mins}:{seconds < 10 && "0"}
+    <div className={secondsRemaining < 6 ? "timer-finishing" : "timer"}>
       {seconds}
     </div>
   );

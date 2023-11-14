@@ -1,7 +1,5 @@
 import "./StartScreen.css";
 function StartScreen({ numQuestions, category, difficulty, dispatch }) {
-  console.log(numQuestions, category, difficulty);
-
   const categoryNames = () => {
     switch (category) {
       case "general_knowledge":
@@ -27,8 +25,6 @@ function StartScreen({ numQuestions, category, difficulty, dispatch }) {
       default:
         return null;
     }
-
-
   };
 
   const difficultyNames = () => {
@@ -42,7 +38,7 @@ function StartScreen({ numQuestions, category, difficulty, dispatch }) {
       default:
         return null;
     }
-  }
+  };
   return (
     <div className="confirm">
       <h3>{numQuestions} questions</h3>

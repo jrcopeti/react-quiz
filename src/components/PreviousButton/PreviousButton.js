@@ -1,5 +1,6 @@
 import "./PreviousButton.css";
-function PreviousButton({ dispatch, index }) {
+function PreviousButton({ dispatch, index, answer }) {
+  if (answer === undefined) return null;
   if (index === 0) return null;
 
   if (index !== 0)

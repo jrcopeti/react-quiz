@@ -17,7 +17,7 @@ import NumQuestions from "../NumQuestions/NumQuestions";
 import PreviousButton from "../PreviousButton/PreviousButton";
 import "./App.css";
 
-const SECS_PER_QUESTION = 90;
+const SECS_PER_QUESTION = 10;
 const POINTS_PER_CORRECT_ANSWER = 10;
 
 function calculatePoints(isCorrect) {
@@ -77,7 +77,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+        secondsRemaining: SECS_PER_QUESTION,
       };
 
     case "newAnswer":
@@ -93,13 +93,14 @@ function reducer(state, action) {
           ...state,
           userAnswers: newUserAnswers,
           points: state.points + additionalPoints,
+          secondsRemaining: SECS_PER_QUESTION,
         };
       }
       // If the answer for the current index is already set, just return the current state
       return { ...state };
 
     case "nextQuestion":
-      return { ...state, index: state.index + 1 };
+      return { ...state, index: state.index + 1};
 
     case "previousQuestion":
       return {

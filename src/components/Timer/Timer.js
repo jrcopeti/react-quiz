@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import "./Timer.css";
 
+
 function Timer({ dispatch, secondsRemaining }) {
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
+
+
 
   useEffect(
     function () {
@@ -13,7 +16,7 @@ function Timer({ dispatch, secondsRemaining }) {
 
       return () => clearInterval(id);
     },
-    [dispatch]
+    [dispatch, secondsRemaining]
   );
 
   return (

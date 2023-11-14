@@ -2,12 +2,13 @@ import "./Category.css";
 function Category({ dispatch }) {
   return (
     <div className="category">
+      <label>Select a category</label>
       <select
         onChange={(e) =>
           dispatch({ type: "category", payload: e.target.value })
         }
       >
-        <option value="">--Please select a CATEGORY</option>
+        <option value="">-----------------------</option>
         <option value="general_knowledge">General Knowledge</option>
         <option value="music">Music</option>
         <option value="sport_and_leisure">Sport and Leisure</option>

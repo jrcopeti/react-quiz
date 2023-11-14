@@ -10,6 +10,7 @@ function NumQuestions({ numQuestions, dispatch }) {
 
   return (
     <div className="category">
+      <label>Select the number of questions</label>
       <select
         value={numQuestions}
         onChange={(e) =>

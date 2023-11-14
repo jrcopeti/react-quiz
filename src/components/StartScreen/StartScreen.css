@@ -8,7 +8,8 @@
 }
 
 .confirm h3 {
-  font-family: "Lilita One", sans-serif;
+  text-shadow: 1px 1px 1px #cdd1d5, -1px -1px 1px #ffffff;
+
   letter-spacing: 1px;
   font-weight: 700;
   font-size: 3rem;
@@ -18,6 +19,7 @@
 }
 
 .confirm button {
+
   font-family: inherit;
   color: var(--color-header);
   font-weight: 700;

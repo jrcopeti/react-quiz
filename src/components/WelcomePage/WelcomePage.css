@@ -8,11 +8,11 @@
 }
 
 .welcome h2 {
-  font-family: "Lilita One", sans-serif;
   letter-spacing: 1px;
+  text-shadow: 1px 1px 1px #cdd1d5, -1px -1px 1px #ffffff;
   font-size: 4rem;
   text-align: center;
-  font-weight: 700;
+  font-weight: 800;
   margin: 3%;
   color: var(--color-header2);
 }

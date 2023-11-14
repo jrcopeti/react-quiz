@@ -243,8 +243,8 @@ export default function App() {
         )}
         {status === "active" && (
           <>
-            <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
             <Footer>
+              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <PreviousButton
                 dispatch={dispatch}
                 answer={userAnswers[index]}

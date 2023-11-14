@@ -1,6 +1,6 @@
 .timer {
   float: left;
-  margin: 1% 6%;
+
   font-size: 2.4rem;
   font-weight: 500;
   color: var(--color-header);
@@ -13,7 +13,7 @@
 
 .timer-finishing {
   float: left;
-  margin: 1% 6%;
+
   font-size: 2.4rem;
   font-weight: 700;
   color: red;

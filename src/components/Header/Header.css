@@ -142,13 +142,97 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .elipse-4 {
+@media only screen and (max-width: 768px) {
+  .elipse-7,
+  .elipse-8,
+  .elipse-9,
+  .elipse-10,
+  .elipse-11,
+  .elipse-12,
+  .elipse-13,
+  .elipse-14,
+  .elipse-15,
+  .elipse-16 {
+    opacity: 0;
+    color: var(--color-light);
     position: absolute;
-    left: 95%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .elipse-7 {
+    position: absolute;
     top: 10%;
+    left: 19%;
     width: 100px;
     height: 100px;
   }
 
+  .elipse-8 {
+    position: absolute;
+    top: 13%;
+    right: 28%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .elipse-9 {
+    height: 30px;
+    width: 30px;
+    top: 21%;
+    position: absolute;
+    left: 35%;
+  }
+
+  .elipse-10 {
+    position: absolute;
+    width: 50px;
+    top: 0%;
+    height: 50px;
+    left: 57%;
+  }
+
+  .elipse-11 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 22.5%;
+    left: 57%;
+  }
+  .elipse-12 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 15%;
+    left: 80%;
+  }
+
+  .elipse-13 {
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+    top: 23%;
+    right: 1%;
+  }
+  .elipse-14 {
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+    top: 24%;
+    left: 1%;
+  }
+  .elipse-15 {
+    position: absolute;
+    top: 5%;
+    left: 32%;
+  }
+  .elipse-16 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 13%;
+    left: 13%;
+  }
 }

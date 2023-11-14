@@ -1,8 +1,22 @@
 .timer {
   float: left;
-  margin: 3%;
-  font-size: 2rem;
-  color: var(--color-medium);
+  margin: 1% 6%;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: var(--color-header);
+  padding: 1.2rem 2.4rem;
+  border: none;
+  border-radius: 30px;
+  background: #f1f6fa;
+  box-shadow: inset 5px 5px 10px #cdd1d5, inset -5px -5px 10px #ffffff;
+}
+
+.timer-finishing {
+  float: left;
+  margin: 1% 6%;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: red;
   padding: 1.2rem 2.4rem;
   border: none;
   border-radius: 30px;

@@ -10,13 +10,15 @@ function NumQuestions({ numQuestions, dispatch }) {
 
   return (
     <div className="category">
+      <label>Select the number of questions</label>
       <select
         value={numQuestions}
         onChange={(e) =>
           dispatch({ type: "numQuestions", payload: e.target.value })
         }
       >
-        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+        <option value="">-----------------------</option>
+        {Array.from({ length: 18 }, (_, i) => i + 3).map((num) => (
           <option value={num} key={num}>
             {num}
           </option>

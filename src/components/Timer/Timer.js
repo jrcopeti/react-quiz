@@ -13,13 +13,11 @@ function Timer({ dispatch, secondsRemaining }) {
 
       return () => clearInterval(id);
     },
-    [dispatch]
+    [dispatch, secondsRemaining]
   );
 
   return (
-    <div className="timer">
-      {mins < 10 && "0"}
-      {mins}:{seconds < 10 && "0"}
+    <div className={secondsRemaining < 6 ? "timer-finishing" : "timer"}>
       {seconds}
     </div>
   );

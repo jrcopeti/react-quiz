@@ -17,7 +17,7 @@ import NumQuestions from "../NumQuestions/NumQuestions";
 import PreviousButton from "../PreviousButton/PreviousButton";
 import "./App.css";
 
-const SECS_PER_QUESTION = 90;
+const SECS_PER_QUESTION = 15;
 const POINTS_PER_CORRECT_ANSWER = 10;
 
 function calculatePoints(isCorrect) {
@@ -34,7 +34,7 @@ const initialState = {
   difficulty: null,
   numQuestions: null,
   points: 0,
-  highscore: 0,
+  highscore: JSON.parse(localStorage.getItem("highScore")) || 0,
   secondsRemaining: null,
 };
 
@@ -77,7 +77,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+        secondsRemaining: SECS_PER_QUESTION,
       };
 
     case "newAnswer":
@@ -93,13 +93,18 @@ function reducer(state, action) {
           ...state,
           userAnswers: newUserAnswers,
           points: state.points + additionalPoints,
+          secondsRemaining: SECS_PER_QUESTION,
         };
       }
       // If the answer for the current index is already set, just return the current state
       return { ...state };
 
     case "nextQuestion":
-      return { ...state, index: state.index + 1 };
+      return {
+        ...state,
+        index: state.index + 1,
+        secondsRemaining: SECS_PER_QUESTION,
+      };
 
     case "previousQuestion":
       return {
@@ -108,11 +113,13 @@ function reducer(state, action) {
       };
 
     case "finish":
+      const newHighScore =
+        state.points > state.highscore ? state.points : state.highscore;
+      localStorage.setItem("highScore", newHighScore);
       return {
         ...state,
         status: "finished",
-        highscore:
-          state.points > state.highscore ? state.points : state.highscore,
+        highscore: newHighScore,
       };
 
     case "restart":
@@ -136,7 +143,7 @@ function reducer(state, action) {
 function processQuestionData(data) {
   return data.map((dataObj) => {
     const options = [...dataObj.incorrectAnswers, dataObj.correctAnswer];
-    console.log(options);
+
     const shuffleOptions = options.sort(() => Math.random() - 0.5);
     const correctOptionIndex = shuffleOptions.indexOf(dataObj.correctAnswer);
     return {
@@ -163,10 +170,8 @@ export default function App() {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  console.log(userAnswers);
 
   const maxPossiblePoints = questions.length * POINTS_PER_CORRECT_ANSWER;
-  console.log(maxPossiblePoints);
 
   useEffect(
     function () {
@@ -177,14 +182,14 @@ export default function App() {
               `https://the-trivia-api.com/v2/questions?limit=${numQuestions}&categories=${category}&difficulties=${difficulty}`
               // `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
             );
-            console.log(difficulty, category, numQuestions);
+
             if (!res.ok) {
               throw new Error("Something went wrong");
             }
             const data = await res.json();
-            console.log(data);
+
             const processedData = processQuestionData(data);
-            console.log(processedData);
+
             dispatch({ type: "dataReceived", payload: processedData });
           } catch (err) {
             console.error(err.message);
@@ -236,8 +241,10 @@ export default function App() {
             />
           </>
         )}
-          {status === "active" && (  <Footer>
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+        {status === "active" && (
+          <>
+            <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+            <Footer>
               <PreviousButton
                 dispatch={dispatch}
                 answer={userAnswers[index]}
@@ -250,7 +257,9 @@ export default function App() {
                 numQuestions={numQuestions}
                 index={index}
               />
-            </Footer>)}
+            </Footer>
+          </>
+        )}
         {status === "finished" && (
           <FinishedScreen
             points={points}

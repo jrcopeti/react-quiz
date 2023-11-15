@@ -38,16 +38,18 @@ body {
   position: relative;
 
   background: var(--color-light);
-  overflow-x: hidden;
+ overflow: hidden;
 
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 600px) {
   .app {
     padding: 18px 10px 10px 18px;
     width: 768px;
     height: 980px;
     /* position: fixed; */
-    left: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -0%);
   }
 }

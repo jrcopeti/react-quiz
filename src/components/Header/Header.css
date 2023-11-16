@@ -22,6 +22,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, 5%);
+  filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.25));
+
 }
 .elipse-center-2 {
   position: absolute;
@@ -30,6 +32,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, 5%);
+  filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.25));
+
 }
 
 .elipse-center-3 {
@@ -52,6 +56,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.25));
 }
 
 .elipse-1 {
@@ -60,6 +65,7 @@
   top: 12%;
   width: 110px;
   height: 120px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .elipse-2 {
@@ -68,6 +74,7 @@
   left: 13%;
   width: 90px;
   height: 90px;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 }
 
 .elipse-3 {
@@ -76,6 +83,8 @@
   left: 70%;
   width: 110px;
   height: 100px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
 }
 
 .elipse-4 {
@@ -84,12 +93,16 @@
   top: 9%;
   width: 100px;
   height: 100px;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
 }
 
 .elipse-5 {
   position: absolute;
   top: 23.5%;
   left: 22%;
+  filter: drop-shadow(0px 1.5px 1.5px rgba(0, 0, 0, 0.25));
+
 }
 .elipse-6 {
   position: absolute;
@@ -97,6 +110,8 @@
   left: 70%;
   width: 90px;
   height: 90px;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
 }
 
 .elipse-9 {
@@ -105,6 +120,8 @@
   width: 36px;
   top: 12.5%;
   left: 20%;
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+
 }
 
 .elipse-16 {
@@ -113,12 +130,16 @@
   height: 22px;
   top: 15%;
   left: 73%;
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+
 }
 
 @media only screen and (min-width: 390px) {
   .elipse-3 {
     top: 0%;
     left: 72%;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+
   }
 
   .elipse-4 {
@@ -127,6 +148,8 @@
     top: 10%;
     width: 100px;
     height: 100px;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
   }
 
   .elipse-6 {
@@ -135,15 +158,18 @@
     left: 70%;
     width: 90px;
     height: 90px;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+
   }
 
-
-.elipse-9 {
+  .elipse-9 {
     height: 34px;
     width: 34px;
     top: 12%;
     position: absolute;
     left: 19%;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+
   }
 
   .elipse-16 {
@@ -152,16 +178,22 @@
     height: 22px;
     top: 15%;
     left: 75%;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
+
   }
 
   .elipse-center-1 {
     width: 175px;
     height: 190px;
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.25));
+
   }
 
   .elipse-center-2 {
     width: 139px;
     height: 190px;
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.25));
+
   }
 
   .elipse-center-3 {
@@ -172,6 +204,8 @@
     width: 106px;
     height: 106px;
     transform: translate(-50%, 48%);
+    filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.25));
+
   }
 }
 
@@ -197,6 +231,7 @@
     left: 19%;
     width: 100px;
     height: 100px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
 
   .elipse-8 {
@@ -205,6 +240,7 @@
     right: 28%;
     width: 50px;
     height: 50px;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
   }
 
   .elipse-9 {
@@ -213,6 +249,7 @@
     top: 21%;
     position: absolute;
     left: 35%;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
   }
 
   .elipse-10 {
@@ -221,6 +258,7 @@
     top: 0%;
     height: 50px;
     left: 57%;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
   }
 
   .elipse-11 {
@@ -229,6 +267,7 @@
     height: 50px;
     top: 22.5%;
     left: 57%;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
   }
   .elipse-12 {
     position: absolute;
@@ -236,6 +275,7 @@
     height: 20px;
     top: 15%;
     left: 80%;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
   }
 
   .elipse-13 {
@@ -245,6 +285,7 @@
     height: 120px;
     top: 23%;
     right: 1%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
   .elipse-14 {
     position: absolute;
@@ -253,11 +294,13 @@
     height: 120px;
     top: 24%;
     left: 1%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
   .elipse-15 {
     position: absolute;
     top: 5%;
     left: 32%;
+    filter: drop-shadow(0px 1.5px 1.5px rgba(0, 0, 0, 0.25));
   }
   .elipse-16 {
     position: absolute;
@@ -265,5 +308,6 @@
     height: 20px;
     top: 13%;
     left: 13%;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.25));
   }
 }

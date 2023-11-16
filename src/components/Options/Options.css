@@ -9,12 +9,12 @@
 
 .btn-option {
   width: 100%;
-  text-align: left;
+  text-align: justify;
   font-family: inherit;
   font-weight: 600;
   border: none;
   font-size: 1.8rem;
-  padding: 1.2rem 2.4rem;
+  padding: 1.2rem 2rem;
   cursor: pointer;
   color: var(--color-dark);
 
@@ -27,12 +27,12 @@
 
 .btn-option.correct {
   background-color: var(--color-theme);
-  border: 1px solid var(--color-theme);
+  /* border: 1px solid var(--color-theme); */
   color: var(--color-light);
 }
 .btn-option.wrong {
   background-color: var(--color-accent);
-  border: 1px solid var(--color-accent);
+  /* border: 1px solid var(--color-accent); */
   color: var(--color-darkest);
 }
 

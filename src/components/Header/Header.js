@@ -12,7 +12,7 @@ function Header() {
           fill="none"
           className="elipse-1"
         >
-          <circle cx="0" cy="45" r="45" fill="#4E5085" fillOpacity="0.5" />
+          <circle className="circle-1" cx="0" cy="45" r="45" fill="#4E5085" fillOpacity="0.5" />
         </svg>
 
         <svg

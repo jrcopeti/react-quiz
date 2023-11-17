@@ -4,7 +4,7 @@ This is my version of Quiz Game. Test your knowledge.
 
 https://quiz-game-jose.netlify.app/
 
-![Quiz Game GIF](https://res.cloudinary.com/du9kornnt/image/upload/c_scale,w_0.60/nt5mkp1npnrzylllr77q.gif)
+![Quiz Game GIF](https://res.cloudinary.com/du9kornnt/image/upload/v1700208951/nt5mkp1npnrzylllr77q.gif)
 
 
 ## Features

@@ -28,7 +28,7 @@ body {
 }
 .app {
   width: auto;
-  height: 110vh;
+  height: 100vh;
   display: flex;
   padding: 18px 10px 10px 18px;
   flex-direction: column;

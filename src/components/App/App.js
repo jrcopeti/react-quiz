@@ -26,7 +26,6 @@ function calculatePoints(isCorrect) {
 
 const initialState = {
   questions: [],
-  // "loading", "error", "preparing", "ready", "active", "finished"
   status: "welcome",
   index: 0,
   userAnswers: [],
@@ -87,7 +86,7 @@ function reducer(state, action) {
 
         const question = state.questions?.at(state.index);
         const isCorrect = action.payload === question.correctOptionIndex;
-        const additionalPoints = calculatePoints(isCorrect, question);
+        const additionalPoints = calculatePoints(isCorrect);
 
         return {
           ...state,
@@ -96,7 +95,7 @@ function reducer(state, action) {
           secondsRemaining: SECS_PER_QUESTION,
         };
       }
-      // If the answer for the current index is already set, just return the current state
+      // If the answer for the current index is already set, do nothing
       return { ...state };
 
     case "nextQuestion":
@@ -180,7 +179,6 @@ export default function App() {
           try {
             const res = await fetch(
               `https://the-trivia-api.com/v2/questions?limit=${numQuestions}&categories=${category}&difficulties=${difficulty}`
-              // `https://opentdb.com/api.php?amount=${numQuestions}&category=${category}&difficulty=${difficulty}&type=multiple`
             );
 
             if (!res.ok) {

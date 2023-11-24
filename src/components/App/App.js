@@ -45,6 +45,9 @@ function reducer(state, action) {
     case "dataFailed":
       return { ...state, status: "error" };
 
+    case "startLoading":
+      return { ...state, status: "loading" };
+
     case "startCategorySelection":
       return {
         ...state,
@@ -69,7 +72,7 @@ function reducer(state, action) {
       return {
         ...state,
         numQuestions: action.payload,
-        status: "loading",
+
       };
 
     case "start":
@@ -175,6 +178,7 @@ export default function App() {
   useEffect(
     function () {
       if (category && difficulty && numQuestions) {
+        dispatch({ type: "startLoading" });
         async function fetchQuestions(difficulty, category, numQuestions) {
           try {
             const res = await fetch(

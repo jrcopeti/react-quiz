@@ -1,15 +1,20 @@
+import { useQuiz } from "../../hooks/useQuiz";
 import "./Options.css";
 
-function Options({ question, dispatch, answer }) {
-  const hasAnswered = answer !== undefined;
+function Options() {
+  const { questions, dispatch, userAnswers, index } = useQuiz();
+
+  const hasAnswered = userAnswers[index] !== undefined;
 
   return (
     <div className="options">
-      {question.options.map((option, index) => (
+      {questions[index].options.map((option, index) => (
         <button
-          className={`btn btn-option ${index === answer ? "answer" : ""} ${
+          className={`btn btn-option ${
+            index === userAnswers[index] ? "answer" : ""
+          } ${
             hasAnswered
-              ? index === question.correctOptionIndex
+              ? index === questions[index].correctOptionIndex
                 ? "correct"
                 : "wrong"
               : ""

@@ -1,12 +1,13 @@
 import "./Question.css";
 import Options from "../Options/Options";
-function Question({ question, dispatch, answer }) {
-
+import { useQuiz } from "../../hooks/useQuiz";
+function Question() {
+  const { questions, index } = useQuiz();
 
   return (
     <div className="question">
-      <h4>{question.question.text}</h4>
-      <Options question={question} dispatch={dispatch} answer={answer} />
+      <h4>{questions[index].question.text}</h4>
+      <Options />
     </div>
   );
 }

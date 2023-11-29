@@ -1,5 +1,8 @@
+import { useQuiz } from "../../hooks/useQuiz";
 import "./Difficulty.css";
-function Difficulty({ dispatch }) {
+
+function Difficulty() {
+  const { dispatch } = useQuiz();
   return (
     <div className="category">
       <label>Select a Level</label>

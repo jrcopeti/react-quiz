@@ -1,5 +1,9 @@
+import { useQuiz } from "../../hooks/useQuiz";
 import "./StartScreen.css";
-function StartScreen({ numQuestions, category, difficulty, dispatch }) {
+
+function StartScreen() {
+  const { numQuestions, category, difficulty, dispatch } = useQuiz();
+
   const categoryNames = () => {
     switch (category) {
       case "general_knowledge":
@@ -39,6 +43,7 @@ function StartScreen({ numQuestions, category, difficulty, dispatch }) {
         return null;
     }
   };
+
   return (
     <div className="confirm">
       <h3>{numQuestions} questions</h3>

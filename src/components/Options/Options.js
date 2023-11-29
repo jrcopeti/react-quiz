@@ -8,20 +8,20 @@ function Options() {
 
   return (
     <div className="options">
-      {questions[index].options.map((option, index) => (
+      {questions[index].options.map((option, optionIndex) => (
         <button
           className={`btn btn-option ${
-            index === userAnswers[index] ? "answer" : ""
+            optionIndex === userAnswers[index] ? "answer" : ""
           } ${
             hasAnswered
-              ? index === questions[index].correctOptionIndex
+              ? optionIndex === questions[index].correctOptionIndex
                 ? "correct"
                 : "wrong"
               : ""
           }`}
           key={option}
           disabled={hasAnswered}
-          onClick={() => dispatch({ type: "newAnswer", payload: index })}
+          onClick={() => dispatch({ type: "newAnswer", payload: optionIndex })}
         >
           {option}
         </button>

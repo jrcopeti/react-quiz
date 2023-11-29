@@ -15,5 +15,5 @@ https://quiz-game-jose.netlify.app/
 - **Scoring System:** Track your current score and view your high score.
 
 ## Technical Highlights
-- **Built with React:** It features a range of interactive components managed by the `useReducer` hook. Centralizes state logic and handle complex state transitions efficiently.
+- **Built with React:** It features a range of interactive components managed by the `useReducer` and `Context` hooks. Centralizes state logic and handle complex state transitions efficiently.
 - **Responsive UI:** Adapts to various screen sizes and user interactions.

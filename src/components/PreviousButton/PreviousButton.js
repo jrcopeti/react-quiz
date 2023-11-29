@@ -1,6 +1,10 @@
+import { useQuiz } from "../../hooks/useQuiz";
 import "./PreviousButton.css";
-function PreviousButton({ dispatch, index, answer }) {
-  if (answer === undefined) return null;
+
+function PreviousButton() {
+  const { dispatch, userAnswers, index } = useQuiz();
+
+  if (userAnswers[index] === undefined) return null;
   if (index === 0) return null;
 
   if (index !== 0)

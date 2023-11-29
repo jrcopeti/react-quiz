@@ -1,6 +1,8 @@
+import { useQuiz } from "../../hooks/useQuiz";
 import "./NumQuestions.css";
 
-function NumQuestions({ numQuestions, dispatch }) {
+function NumQuestions() {
+  const {dispatch, numQuestions} = useQuiz();
   return (
     <div className="category">
       <label>Select the number of questions</label>
@@ -21,7 +23,7 @@ function NumQuestions({ numQuestions, dispatch }) {
   );
 }
 
-// If you want to use input range, you can do it like this:
+// To use input range, you can do it like this:
 // import { useRef } from "react";
 
 // const numberRef = useRef(null);
